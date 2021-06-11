@@ -5,10 +5,10 @@ const sizes = getSizes()
 document.addEventListener(
     "change",
     (event) => {
-        if (event.target.name === "size") {
-            const sizeId = event.target.value
-            setSize(parseInt(sizeId))
-        }
+        // if (event.target.name === "size") {
+        //     const sizeId = event.target.value
+        //     setSize(parseInt(sizeId))
+        //}
     }
 )
 
