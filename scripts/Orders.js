@@ -22,4 +22,3 @@ export const Orders = () => {
 
     return html
 }
-
