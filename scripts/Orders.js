@@ -1,17 +1,39 @@
 import { getOrders } from "./database.js"
 import { getMetals } from "./database.js"
+import { getSizes } from "./database.js"
+import { getStyles } from "./database.js"
 
 const buildOrderListItem = (order) => {
     const metals = getMetals()
+    const sizes = getSizes()
+    const styles = getStyles()
 
     // Remember that the function you pass to find() must return true/false
     const foundMetal = metals.find(
         (metal) => {
-            if (metal.id === order.metalId)
+            if (metal.id === order.metalId) {
                 return true
+            }
         }
     )
-    const totalCost = foundMetal.price
+
+    const foundSizes = sizes.find(
+        (size) => {
+            if (size.id === order.sizeId) {
+                return true
+            }
+        }
+    )
+
+    const foundStyles = styles.find(
+        (style) => {
+            if (style.id === order.styleId) {
+                return true
+            }
+        }
+    )
+
+    const totalCost = foundMetal.price + foundSizes.price + foundStyles.price
 
     const costString = totalCost.toLocaleString("en-US", {
         style: "currency",
